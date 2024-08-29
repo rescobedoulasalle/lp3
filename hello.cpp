@@ -12,6 +12,7 @@ int main(){
 	
 	}
 
+	cout<<"Agregado por Richart Escobedo"<<"\n";
 	return 0;
 
 }
