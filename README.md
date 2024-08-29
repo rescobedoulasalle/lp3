@@ -1,6 +1,6 @@
-# Repositorio para LP3
+# Repositorio de Richart Escobedo
 
-## Autor:
+## Indice
 
-- Richart Escobedo Quispe
+- 
 
