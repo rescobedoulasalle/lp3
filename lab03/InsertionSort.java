@@ -4,6 +4,8 @@ public class InsertionSort {
     void sort(int arr[])
     {
         int n = arr.length;
+	long start = System.nanoTime();
+	System.out.println(
         for (int i = 1; i < n; ++i) {
             int key = arr[i];
             int j = i - 1;
