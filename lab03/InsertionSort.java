@@ -32,12 +32,23 @@ public class InsertionSort {
     // Driver method
     public static void main(String args[])
     {
-        int arr[] = { 12, 11, 13, 5, 6 };
+        //int arr[] = { 12, 11, 13, 5, 6 };
+        int arr[] = worstCase(Integer.parseInt(args[0]));
+
+        printArray(arr);
 
         InsertionSort ob = new InsertionSort();
         ob.sort(arr);
 
         printArray(arr);
+    }
+
+    public static int[] worstCase(int n){
+	int a[] = new int[n];
+    	for(int i=0; i<n; i=i+1){
+		a[i]=n-i;
+	}
+	return a;
     }
 }
 
