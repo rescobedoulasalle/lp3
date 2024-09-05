@@ -11,3 +11,7 @@
 | 7  | Hallando el tiempo de ejecución del algoritmo de ordenamiento.  |
 | 8  | Graficando la función de la complejidad del algoritmo de ordenamiento para peores casos  |
 | 9  | Uniendo ambos gráficos de los algoritmos de ordenamiento.  |
+
+Integrantes:
+	Richart
+	ANgelica
