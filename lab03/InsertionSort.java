@@ -1,11 +1,15 @@
+import java.util.*;
+
 // Java program for implementation of Insertion Sort
 public class InsertionSort {
     /* Function to sort array using insertion sort */
     void sort(int arr[])
     {
         int n = arr.length;
-	long start = System.nanoTime();
-	System.out.println(
+	
+	long startTime = System.nanoTime();
+	System.out.println(startTime);
+
         for (int i = 1; i < n; ++i) {
             int key = arr[i];
             int j = i - 1;
@@ -19,8 +23,12 @@ public class InsertionSort {
             }
             arr[j + 1] = key;
         }
-    }
+    
 
+	long endTime = System.nanoTime();
+	System.out.println(endTime);
+	System.out.println(endTime-startTime);
+}
     /* A utility function to print array of size n */
     static void printArray(int arr[])
     {
