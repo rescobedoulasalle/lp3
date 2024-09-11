@@ -1,22 +1,17 @@
 import java.util.*;
 
-// Java program for implementation of Insertion Sort
 public class InsertionSort {
-    /* Function to sort array using insertion sort */
     void sort(int arr[])
     {
         int n = arr.length;
 	
 	long startTime = System.nanoTime();
-	System.out.println(startTime);
+	//System.out.println(startTime);
 
         for (int i = 1; i < n; ++i) {
             int key = arr[i];
             int j = i - 1;
 
-            /* Move elements of arr[0..i-1], that are
-               greater than key, to one position ahead
-               of their current position */
             while (j >= 0 && arr[j] > key) {
                 arr[j + 1] = arr[j];
                 j = j - 1;
@@ -26,10 +21,9 @@ public class InsertionSort {
     
 
 	long endTime = System.nanoTime();
-	System.out.println(endTime);
+	//System.out.println(endTime);
 	System.out.println(endTime-startTime);
 }
-    /* A utility function to print array of size n */
     static void printArray(int arr[])
     {
         int n = arr.length;
@@ -39,18 +33,22 @@ public class InsertionSort {
         System.out.println();
     }
 
-    // Driver method
     public static void main(String args[])
     {
-        //int arr[] = { 12, 11, 13, 5, 6 };
-        int arr[] = worstCase(Integer.parseInt(args[0]));
+	int N = Integer.parseInt(args[0]);
 
-        printArray(arr);
+	ArrayList<int[]> casos = new ArrayList<int[]>();
+     
+     	for(int i=1; i<=N; i=i+1) {
+		casos.add( worstCase(i) );
+	}	
 
         InsertionSort ob = new InsertionSort();
-        ob.sort(arr);
+        
+	for(int x=0; x<casos.size(); x++) {
+		ob.sort(casos.get(x));
+	}
 
-        printArray(arr);
     }
 
     public static int[] worstCase(int n){
@@ -62,5 +60,4 @@ public class InsertionSort {
     }
 }
 
-/* This code is contributed by Hritik Shah. */
 
