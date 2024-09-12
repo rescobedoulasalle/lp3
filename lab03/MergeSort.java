@@ -35,39 +35,22 @@ public class InsertionSort {
 
     public static void main(String args[]) {
 		int N = Integer.parseInt(args[0]);
-		
-		String t = args[1];
-		String label = "worst_case";
-
-		switch(t){
-			case "w": label="worstCase"; break;
-			case "a": label="averageCase"; break;
-			case "b": label="bestCase"; break;
-			default: label="worstCase"; 
-		}
 
 		ArrayList<int[]> casos = new ArrayList<int[]>();
      
-   	for(int i=1; i<=N; i=i+1) {
-		  if(t=="w") {
-			  casos.add( worstCase(i) );
-		  }else if(t=="a"){
-			  casos.add( averageCase(i) );			
-		  }else if(t=="b"){
-			  casos.add( bestCase(i) );			
-		  }else{
-			  casos.add( worstCase(i) );			
-		  }
-	  }	
+     	for(int i=1; i<=N; i=i+1) {
+			casos.add( bestCase(i) );
+		}	
 
         InsertionSort ob = new InsertionSort();
         
-		try (FileWriter fichero = new FileWriter("insertion_"+label+".dat")) {
+		try (FileWriter fichero = new FileWriter("insertion.dat")) {
 			PrintWriter pw = new PrintWriter(fichero);
 
 			for(int x=0; x<casos.size(); x++) {
 				pw.println(ob.sort(casos.get(x)));
 			}
+
 		} catch (Exception e) {
             e.printStackTrace();
         }

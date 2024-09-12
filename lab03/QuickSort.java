@@ -20,10 +20,8 @@ public class QuickSort {
         int i = (low - 1);
 
         for (int j = low; j <= high - 1; j++) {
-
             // If current element is smaller than the pivot
             if (arr[j] < pivot) {
-
                 // Increment index of smaller element
                 i++;
                 swap(arr, i, j);
@@ -36,7 +34,6 @@ public class QuickSort {
     static void quickSort(int[] arr, int low, int high)
     {
         if (low < high) {
-
             // pi is partitioning index, arr[p]
             // is now at right place
             int pi = partition(arr, low, high);
@@ -48,22 +45,19 @@ public class QuickSort {
         }
     }
 
-    long sort(int arr[])
-    {
-        int N = arr.length;
-	
-	long startTime = System.nanoTime();
-	//System.out.println(startTime);
+    long sort(int arr[]) {
+      int N = arr.length;	
+	    long startTime = System.nanoTime();
+	    //System.out.println(startTime);
+	    quickSort(arr, 0, N - 1);
 
-	quickSort(arr, 0, N - 1);
-
-	long endTime = System.nanoTime();
-	//System.out.println(endTime);
-	//System.out.println(endTime-startTime);
-	return (endTime-startTime);
-}
-    static void printArray(int arr[])
-    {
+	    long endTime = System.nanoTime();
+	    //System.out.println(endTime);
+	    //System.out.println(endTime-startTime);
+	    return (endTime-startTime);
+  }
+  
+    static void printArray(int arr[]) {
         int n = arr.length;
         for (int i = 0; i < n; ++i)
             System.out.print(arr[i] + " ");
@@ -71,56 +65,74 @@ public class QuickSort {
         System.out.println();
     }
 
-    public static void main(String args[])
-    {
-	int N = Integer.parseInt(args[0]);
+    public static void main(String args[]) {
+	    int N = Integer.parseInt(args[0]);
+	
+	    String t = args[1];
+		  String label = "worst_case";
 
-	ArrayList<int[]> casos = new ArrayList<int[]>();
+		  switch(t) {
+			  case "w": label="worstCase"; break;
+			  case "a": label="averageCase"; break;
+			  case "b": label="bestCase"; break;
+			  default: label="worstCase"; 
+		  }
+
+	    ArrayList<int[]> casos = new ArrayList<int[]>();
      
-     	for(int i=1; i<=N; i=i+1) {
-		casos.add( bestCase(i) );
-	}	
+      for(int i=1; i<=N; i=i+1) {
+		  if(t=="w") {
+			  casos.add( worstCase(i) );
+		  }else if(t=="a"){
+			  casos.add( averageCase(i) );			
+		  }else if(t=="b"){
+			  casos.add( bestCase(i) );			
+		  }else{
+			  casos.add( worstCase(i) );			
+		  }
+	  }	
+     
 
-        InsertionSort ob = new InsertionSort();
+      QuickSort ob = new QuickSort();
         
-	try (FileWriter fichero = new FileWriter("quick.dat"))
-        {
-		PrintWriter pw = new PrintWriter(fichero);
+	  try (FileWriter fichero = new FileWriter("quick_"+label+".dat")) {
+		  PrintWriter pw = new PrintWriter(fichero);
 
-		for(int x=0; x<casos.size(); x++) {
-			pw.println(ob.sort(casos.get(x)));
-		}
+		  for(int x=0; x<casos.size(); x++) {
+		  	pw.println(ob.sort(casos.get(x)));
+		  }
 
-	} catch (Exception e) {
-            e.printStackTrace();
-        }
+	  }catch (Exception e) {
+      e.printStackTrace();
+    }
 
     }
 
-    public static int[] worstCase(int n){
-	int a[] = new int[n];
-    	for(int i=0; i<n; i=i+1){
-		a[i]=n-i;
-	}
-	return a;
+    public static int[] worstCase(int n) {
+		int a[] = new int[n];
+    	for(int i=0; i<n; i=i+1) {
+			a[i]=n-i;
+		}
+		return a;
     }
     
-    public static int[] bestCase(int n){
-	int a[] = new int[n];
-    	for(int i=0; i<n; i=i+1){
-		a[i]=i;
-	}
-	return a;
+    public static int[] bestCase(int n) {
+		int a[] = new int[n];
+    	for(int i=0; i<n; i=i+1) {
+			a[i]=i;
+		}
+		return a;
     }
-    public static int[] averageCase(int n){
-	int a[] = new int[n];
-    	for(int i=0; i<n/2; i=i+1){
-		a[i]=i;
-	}
-    	for(int i=n/2; i<n; i=i+1){
-		a[i]=n-i;
-	}
-	return a;
+    
+    public static int[] averageCase(int n) {
+		int a[] = new int[n];
+    	for(int i=0; i<n/2; i=i+1) {
+			a[i]=i;
+		}
+    	for(int i=n/2; i<n; i=i+1) {
+			a[i]=n-i;
+		}
+		return a;
     }
 }
 
